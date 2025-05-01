@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Love Animation</title>
+  <title>Love Animation with Music</title>
   <style>
     *,
     *:before,
@@ -90,6 +90,9 @@
   <audio class="blop" style="display: none">
     <source src="https://www.freesound.org/data/previews/265/265115_4373976-lq.mp3" type="audio/ogg">
   </audio>
+  <audio class="bg-music" autoplay loop style="display: none">
+    <source src="https://files.catbox.moe/73zxl3.mp3" type="audio/mpeg">
+  </audio>
   <div class="sound">sound</div>
 
   <script src="//cdn.jsdelivr.net/mojs/latest/mo.min.js"></script>
@@ -115,6 +118,7 @@
       colHeart: "#fa4843",
       blup: qs(".blup"),
       blop: qs(".blop"),
+      bgMusic: qs(".bg-music"),
       sound: qs(".sound"),
     };
 
@@ -475,6 +479,7 @@
     const volume = 0.2;
     el.blup.volume = volume;
     el.blop.volume = volume;
+    el.bgMusic.volume = volume;
 
     const toggleSound = () => {
       let on = true;
@@ -482,10 +487,12 @@
         if (on) {
           el.blup.volume = 0.0;
           el.blop.volume = 0.0;
+          el.bgMusic.volume = 0.0;
           el.sound.classList.add("sound--off");
         } else {
           el.blup.volume = volume;
           el.blop.volume = volume;
+          el.bgMusic.volume = volume;
           el.sound.classList.remove("sound--off");
         }
         on = !on;
